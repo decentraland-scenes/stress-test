@@ -30,7 +30,7 @@ function spawnCube(x: number, y: number, z: number) {
   const cube = new Entity()
 
   // add a transform to the entity
-  cube.addComponent(new Transform({ position: new Vector3(x, y, z), scale: new Vector3(0.5, 0.5, 0.5
+  cube.addComponent(new Transform({ position: new Vector3(x, y, z), scale: new Vector3(1, 1, 1
 	) }))
 
   // add a shape to the entity
@@ -61,8 +61,8 @@ function spawnCube(x: number, y: number, z: number) {
 
 /// --- Spawn a cube ---
 // let box = new BoxShape();
-for (var x = 0.25; x < 16; x+=0.5) {
-  for (var y = 0.25; y < 16; y+=0.5) {
+for (var x = 0.5; x < 16; x+=1) {
+  for (var y = 0.5; y < 16; y+=1) {
     spawnCube(x, 0, y);
   }
 }
