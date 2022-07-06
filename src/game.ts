@@ -2,7 +2,7 @@
 let t = 0;
 class CircleHoverSystem implements ISystem {
   // this group will contain every entity that has a Transform component
-  group = engine.getComponentGroup(Transform)
+  group = engine.getComponentGroup(BoxShape)
 
   update(dt: number) {
     t +=  Math.PI * dt * 0.5
@@ -69,3 +69,25 @@ for (var x = 0.5; x < 16; x+=1) {
 
 let started = true;
 engine.addSystem(hoverSystem);
+
+
+let sign = new Entity()
+sign.addComponent(new Transform({
+	position: new Vector3(8, 5, 4),
+	scale: new Vector3(1, 1, 1)
+}))
+// sign.addComponent(new PlaneShape())
+engine.addEntity(sign)
+
+
+let name = new Entity()
+name.addComponent(new TextShape("Stress test SDK v6.11.1\n16x16 cubes"))
+name.getComponent(TextShape).color = Color3.Red()
+name.setParent(sign)
+engine.addEntity(name)
+
+name.addComponent(new OnPointerDown(
+	()=>{
+		openExternalURL("https://github.com/decentraland-scenes/stress-test")
+	}
+))
